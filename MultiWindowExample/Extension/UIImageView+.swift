@@ -40,4 +40,12 @@ extension UIImageView {
       throw e
     }
   }
+
+  func setupImage(url: URL?) {
+    Task.detached { [weak self] in
+      do {
+        try? await self?.downloadAndSetImage(url: url)
+      }
+    }
+  }
 }

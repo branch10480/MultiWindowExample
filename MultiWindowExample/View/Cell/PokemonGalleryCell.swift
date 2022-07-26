@@ -19,11 +19,7 @@ class PokemonGalleryCell: UICollectionViewCell {
 
   func configure(name: String, url: URL?) {
     nameLabel.text = name
-    Task.detached { [weak self] in
-      do {
-        try? await self?.imageView.downloadAndSetImage(url: url)
-      }
-    }
+    imageView.setupImage(url: url)
   }
 
 }
